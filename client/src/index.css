@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #35588E;
+  --bg-dark: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.7);
+}
+
+@keyframes gradient-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #111827, #2e1065);
+  background-size: 400% 400%;
+  animation: gradient-bg 15s ease infinite;
+  color: #f8fafc;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -10%; /* Offset to ensure smooth bounce at edges */
+  left: -10%;
+  width: 120vw; /* Wider than screen to allow animation without cropping */
+  height: 120vh;
+  background-image: url('/logo.png');
+  background-size: 120px 120px; /* Small logos */
+  background-repeat: repeat;
+  opacity: 0.04;
+  z-index: -1;
+  pointer-events: none;
+  animation: gentle-bounce 4s ease-in-out infinite;
+}
+
+@keyframes gentle-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-gentle-bounce {
+  animation: gentle-bounce 2.5s ease-in-out infinite;
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb {
+  background: #35588E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a75b8;
+}
